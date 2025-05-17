@@ -30,7 +30,6 @@ Deze website is bedoeld om gebruikers te informeren over de voordelen van Amex-c
       /[slug].tsx
     /guides
       /[slug].tsx
-    /credit-cards.tsx
     /compare.tsx
     /calculator.tsx
     /bonussen.tsx

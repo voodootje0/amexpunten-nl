@@ -28,7 +28,7 @@ export default function Home() {
               Van exclusieve lounges tot reisverzekeringen. Ontdek hoe je met een Amex creditcard meer uit je uitgaven haalt.
             </p>
             <Link
-              href="/credit-cards"
+              href="/creditcards"
               className="inline-block bg-yellow-400/90 text-gray-900 px-8 py-4 rounded-lg font-semibold hover:bg-yellow-400 transition-colors"
             >
               Bekijk alle kaarten
@@ -70,7 +70,7 @@ export default function Home() {
                 ))}
               </ul>
               <Link 
-                href={`/credit-cards/${card.id}`}
+                href={`/creditcards/${card.id}`}
                 className="inline-flex items-center bg-yellow-400/90 text-gray-900 px-6 py-2.5 rounded-lg font-medium hover:bg-yellow-400 transition-colors"
               >
                 Meer informatie
@@ -129,7 +129,7 @@ export default function Home() {
               Ontdek welke American Express creditcard het beste bij jou past en start met het verzamelen van punten.
             </p>
             <Link 
-              href="/credit-cards"
+              href="/vergelijking-creditcard"
               className="inline-flex items-center bg-yellow-400/90 text-gray-900 px-8 py-4 rounded-lg font-medium hover:bg-yellow-400 transition-colors"
             >
               Vergelijk creditcards

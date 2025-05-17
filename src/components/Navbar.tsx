@@ -23,7 +23,7 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <Link 
-              href="/credit-cards" 
+              href="/creditcards" 
               className="text-gray-200 hover:text-white transition-colors duration-200 font-medium"
             >
               Credit Cards
@@ -62,7 +62,7 @@ export default function Navbar() {
           <div className="md:hidden py-4">
             <nav className="flex flex-col space-y-4">
               <Link 
-                href="/credit-cards" 
+                href="/creditcards" 
                 className="text-gray-200 hover:text-white transition-colors duration-200 font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
