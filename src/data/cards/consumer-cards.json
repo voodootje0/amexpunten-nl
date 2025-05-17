@@ -25,6 +25,35 @@
           "description": "Geniet van een exclusief diner in toprestaurants"
         }
       ],
+      "allBenefits": {
+        "price": {
+          "Jaarlijkse kosten": 650,
+          "Welkomstbonus punten": 60000,
+          "Welkomstbonus uitgaven": 3000,
+          "Welkomstbonus periode": "3 maanden"
+        },
+        "travel": {
+          "Snelle grenspassage op Schiphol en Eindhoven": true,
+          "Onbeperkt luchthaven loungetoegang": true,
+          "Priority Pass": true,
+          "LoungeKey": true,
+          "Centurion Lounge": true,
+          "Drie keer per jaar een diner voor 2": true,
+          "Jaarlijks tot 100 euro dinertegoed": false,
+          "Tegoed voor Amazon Prime abonnement": false
+        },
+        "verzekering": {
+          "Reisverzekering": true,
+          "Aankoopverzekering": true,
+          "Annuleringsverzekering": true,
+          "Bagageverzekering": true,
+          "Autohuurverzekering": true
+        },
+        "punten": {
+          "Punten per euro": 1,
+          "Experience Points per jaar": 0
+        }
+      },
       "image": "/img/platinum-card.avif"
     },
     "gold": {
@@ -52,6 +81,35 @@
           "description": "Jaarlijks tegoed voor je Prime membership"
         }
       ],
+      "allBenefits": {
+        "price": {
+          "Jaarlijkse kosten": 195,
+          "Welkomstbonus punten": 30000,
+          "Welkomstbonus uitgaven": 2000,
+          "Welkomstbonus periode": "3 maanden"
+        },
+        "travel": {
+          "Snelle grenspassage op Schiphol en Eindhoven": false,
+          "Onbeperkt luchthaven loungetoegang": false,
+          "Priority Pass": true,
+          "LoungeKey": false,
+          "Centurion Lounge": false,
+          "Drie keer per jaar een diner voor 2": false,
+          "Jaarlijks tot 100 euro dinertegoed": true,
+          "Tegoed voor Amazon Prime abonnement": true
+        },
+        "verzekering": {
+          "Reisverzekering": true,
+          "Aankoopverzekering": true,
+          "Annuleringsverzekering": true,
+          "Bagageverzekering": true,
+          "Autohuurverzekering": false
+        },
+        "punten": {
+          "Punten per euro": 1,
+          "Experience Points per jaar": 0
+        }
+      },
       "image": "/img/gold-card.avif"
     },
     "green": {
@@ -79,6 +137,35 @@
           "description": "Uitgebreide aankoop- en reisverzekeringen"
         }
       ],
+      "allBenefits": {
+        "price": {
+          "Jaarlijkse kosten": 0,
+          "Welkomstbonus punten": 10000,
+          "Welkomstbonus uitgaven": 1000,
+          "Welkomstbonus periode": "3 maanden"
+        },
+        "travel": {
+          "Snelle grenspassage op Schiphol en Eindhoven": false,
+          "Onbeperkt luchthaven loungetoegang": false,
+          "Priority Pass": false,
+          "LoungeKey": false,
+          "Centurion Lounge": false,
+          "Drie keer per jaar een diner voor 2": false,
+          "Jaarlijks tot 100 euro dinertegoed": false,
+          "Tegoed voor Amazon Prime abonnement": false
+        },
+        "verzekering": {
+          "Reisverzekering": true,
+          "Aankoopverzekering": true,
+          "Annuleringsverzekering": false,
+          "Bagageverzekering": false,
+          "Autohuurverzekering": false
+        },
+        "punten": {
+          "Punten per euro": 1,
+          "Experience Points per jaar": 0
+        }
+      },
       "image": "/img/green-card.avif"
     },
     "flying-blue-platinum": {
@@ -106,6 +193,35 @@
           "description": "Geniet samen van de voordelen"
         }
       ],
+      "allBenefits": {
+        "price": {
+          "Jaarlijkse kosten": 650,
+          "Welkomstbonus miles": 60000,
+          "Welkomstbonus uitgaven": 3000,
+          "Welkomstbonus periode": "3 maanden"
+        },
+        "travel": {
+          "Snelle grenspassage op Schiphol en Eindhoven": true,
+          "Onbeperkt luchthaven loungetoegang": true,
+          "Priority Pass": true,
+          "LoungeKey": true,
+          "Centurion Lounge": true,
+          "Drie keer per jaar een diner voor 2": true,
+          "Jaarlijks tot 100 euro dinertegoed": false,
+          "Tegoed voor Amazon Prime abonnement": false
+        },
+        "verzekering": {
+          "Reisverzekering": true,
+          "Aankoopverzekering": true,
+          "Annuleringsverzekering": true,
+          "Bagageverzekering": true,
+          "Autohuurverzekering": true
+        },
+        "punten": {
+          "Miles per euro": 1.5,
+          "Experience Points per jaar": 60
+        }
+      },
       "image": "/img/flying-blue-platinum-card.avif"
     },
     "flying-blue-gold": {
@@ -133,6 +249,35 @@
           "description": "Reis onbezorgd met complete verzekeringen"
         }
       ],
+      "allBenefits": {
+        "price": {
+          "Jaarlijkse kosten": 195,
+          "Welkomstbonus miles": 30000,
+          "Welkomstbonus uitgaven": 2000,
+          "Welkomstbonus periode": "3 maanden"
+        },
+        "travel": {
+          "Snelle grenspassage op Schiphol en Eindhoven": false,
+          "Onbeperkt luchthaven loungetoegang": false,
+          "Priority Pass": true,
+          "LoungeKey": false,
+          "Centurion Lounge": false,
+          "Drie keer per jaar een diner voor 2": false,
+          "Jaarlijks tot 100 euro dinertegoed": true,
+          "Tegoed voor Amazon Prime abonnement": true
+        },
+        "verzekering": {
+          "Reisverzekering": true,
+          "Aankoopverzekering": true,
+          "Annuleringsverzekering": true,
+          "Bagageverzekering": true,
+          "Autohuurverzekering": false
+        },
+        "punten": {
+          "Miles per euro": 1,
+          "Experience Points per jaar": 30
+        }
+      },
       "image": "/img/flying-blue-gold-card.avif"
     },
     "flying-blue-silver": {
@@ -160,6 +305,35 @@
           "description": "Flexibele betalingsmogelijkheden voor je vluchten"
         }
       ],
+      "allBenefits": {
+        "price": {
+          "Jaarlijkse kosten": 95,
+          "Welkomstbonus miles": 15000,
+          "Welkomstbonus uitgaven": 1000,
+          "Welkomstbonus periode": "3 maanden"
+        },
+        "travel": {
+          "Snelle grenspassage op Schiphol en Eindhoven": false,
+          "Onbeperkt luchthaven loungetoegang": false,
+          "Priority Pass": false,
+          "LoungeKey": false,
+          "Centurion Lounge": false,
+          "Drie keer per jaar een diner voor 2": false,
+          "Jaarlijks tot 100 euro dinertegoed": false,
+          "Tegoed voor Amazon Prime abonnement": false
+        },
+        "verzekering": {
+          "Reisverzekering": true,
+          "Aankoopverzekering": true,
+          "Annuleringsverzekering": false,
+          "Bagageverzekering": false,
+          "Autohuurverzekering": false
+        },
+        "punten": {
+          "Miles per euro": 0.8,
+          "Experience Points per jaar": 15
+        }
+      },
       "image": "/img/flying-blue-silver-card.avif"
     },
     "flying-blue-entry": {
@@ -187,6 +361,35 @@
           "description": "Deel de voordelen met je dierbaren"
         }
       ],
+      "allBenefits": {
+        "price": {
+          "Jaarlijkse kosten": 0,
+          "Welkomstbonus miles": 5000,
+          "Welkomstbonus uitgaven": 500,
+          "Welkomstbonus periode": "3 maanden"
+        },
+        "travel": {
+          "Snelle grenspassage op Schiphol en Eindhoven": false,
+          "Onbeperkt luchthaven loungetoegang": false,
+          "Priority Pass": false,
+          "LoungeKey": false,
+          "Centurion Lounge": false,
+          "Drie keer per jaar een diner voor 2": false,
+          "Jaarlijks tot 100 euro dinertegoed": false,
+          "Tegoed voor Amazon Prime abonnement": false
+        },
+        "verzekering": {
+          "Reisverzekering": true,
+          "Aankoopverzekering": true,
+          "Annuleringsverzekering": false,
+          "Bagageverzekering": false,
+          "Autohuurverzekering": false
+        },
+        "punten": {
+          "Miles per euro": 0.5,
+          "Experience Points per jaar": 0
+        }
+      },
       "image": "/img/flying-blue-entry-card.avif"
     },
     "blue": {
@@ -214,6 +417,35 @@
           "description": "Deel de voordelen met je dierbaren"
         }
       ],
+      "allBenefits": {
+        "price": {
+          "Jaarlijkse kosten": 0,
+          "Welkomstbonus punten": 5000,
+          "Welkomstbonus uitgaven": 500,
+          "Welkomstbonus periode": "3 maanden"
+        },
+        "travel": {
+          "Snelle grenspassage op Schiphol en Eindhoven": false,
+          "Onbeperkt luchthaven loungetoegang": false,
+          "Priority Pass": false,
+          "LoungeKey": false,
+          "Centurion Lounge": false,
+          "Drie keer per jaar een diner voor 2": false,
+          "Jaarlijks tot 100 euro dinertegoed": false,
+          "Tegoed voor Amazon Prime abonnement": false
+        },
+        "verzekering": {
+          "Reisverzekering": true,
+          "Aankoopverzekering": true,
+          "Annuleringsverzekering": false,
+          "Bagageverzekering": false,
+          "Autohuurverzekering": false
+        },
+        "punten": {
+          "Punten per euro": 1,
+          "Experience Points per jaar": 0
+        }
+      },
       "image": "/img/blue-card.avif"
     }
   }
