@@ -1,0 +1,46 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Date Planning",
+      "slug": "date-planning",
+      "description": "Expert guides and tips for planning perfect dates in Bangkok"
+    },
+    {
+      "id": 2,
+      "name": "Local Guide",
+      "slug": "local-guide",
+      "description": "Insider tips and local knowledge for exploring Bangkok"
+    },
+    {
+      "id": 3,
+      "name": "Travel Tips",
+      "slug": "travel-tips",
+      "description": "Essential travel advice and tips for Bangkok visitors"
+    },
+    {
+      "id": 4,
+      "name": "Nightlife",
+      "slug": "nightlife",
+      "description": "The best bars, clubs, and evening entertainment in Bangkok"
+    },
+    {
+      "id": 5,
+      "name": "Sunset Spots",
+      "slug": "sunset-spots",
+      "description": "The most beautiful places to watch the sunset in Bangkok"
+    },
+    {
+      "id": 6,
+      "name": "Food & Drink",
+      "slug": "food-drink",
+      "description": "The best restaurants, cafes, and bars in Bangkok"
+    },
+    {
+      "id": 7,
+      "name": "Brunch",
+      "slug": "brunch",
+      "description": "The best brunch spots and breakfast places in Bangkok"
+    }
+  ]
+} 

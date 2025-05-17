@@ -1,0 +1,220 @@
+{
+  "cards": {
+    "platinum": {
+      "id": "platinum",
+      "name": "American Express Platinum",
+      "type": "standard",
+      "color": "platinum",
+      "annualFee": 650,
+      "welcomeBonus": {
+        "points": 60000,
+        "spend": 3000,
+        "period": "3 maanden"
+      },
+      "benefits": [
+        {
+          "title": "Snelle grenspassage op Schiphol en Eindhoven",
+          "description": "Gebruik de fast lane bij de douane"
+        },
+        {
+          "title": "Onbeperkt luchthaven loungetoegang",
+          "description": "Toegang tot meer dan 1.300 lounges wereldwijd"
+        },
+        {
+          "title": "Drie keer per jaar een diner voor 2",
+          "description": "Geniet van een exclusief diner in toprestaurants"
+        }
+      ],
+      "image": "/img/platinum-card.avif"
+    },
+    "gold": {
+      "id": "gold",
+      "name": "The Gold Card",
+      "type": "standard",
+      "color": "gold",
+      "annualFee": 195,
+      "welcomeBonus": {
+        "points": 30000,
+        "spend": 2000,
+        "period": "3 maanden"
+      },
+      "benefits": [
+        {
+          "title": "4x per jaar gratis luchthaven loungetoegang",
+          "description": "Toegang tot Priority Pass lounges"
+        },
+        {
+          "title": "Jaarlijks tot 100 euro dinertegoed",
+          "description": "Te gebruiken bij geselecteerde restaurants"
+        },
+        {
+          "title": "Tegoed voor Amazon Prime abonnement",
+          "description": "Jaarlijks tegoed voor je Prime membership"
+        }
+      ],
+      "image": "/img/gold-card.avif"
+    },
+    "green": {
+      "id": "green",
+      "name": "American Express Green",
+      "type": "standard",
+      "color": "green",
+      "annualFee": 0,
+      "welcomeBonus": {
+        "points": 10000,
+        "spend": 1000,
+        "period": "3 maanden"
+      },
+      "benefits": [
+        {
+          "title": "Spaar 1 punt per 1 uitgegeven euro",
+          "description": "Verdien punten bij al je dagelijkse uitgaven"
+        },
+        {
+          "title": "2 extra kaarten voor familieleden of vrienden",
+          "description": "Deel de voordelen met je dierbaren"
+        },
+        {
+          "title": "Verzekerd kopen en onbezorgd op reis",
+          "description": "Uitgebreide aankoop- en reisverzekeringen"
+        }
+      ],
+      "image": "/img/green-card.avif"
+    },
+    "flying-blue-platinum": {
+      "id": "flying-blue-platinum",
+      "name": "Flying Blue - American Express Platinum",
+      "type": "flyingBlue",
+      "color": "platinum",
+      "annualFee": 650,
+      "welcomeBonus": {
+        "miles": 60000,
+        "spend": 3000,
+        "period": "3 maanden"
+      },
+      "benefits": [
+        {
+          "title": "Spaar 1,5 Miles per 1 uitgegeven euro",
+          "description": "Verdien sneller Flying Blue Miles"
+        },
+        {
+          "title": "Ontvang elk jaar 60 Experience Points (XP)",
+          "description": "Bouw sneller je Flying Blue status op"
+        },
+        {
+          "title": "Deel uw Platinum Flying Blue niveau",
+          "description": "Geniet samen van de voordelen"
+        }
+      ],
+      "image": "/img/flying-blue-platinum-card.avif"
+    },
+    "flying-blue-gold": {
+      "id": "flying-blue-gold",
+      "name": "Flying Blue - American Express Gold",
+      "type": "flyingBlue",
+      "color": "gold",
+      "annualFee": 195,
+      "welcomeBonus": {
+        "miles": 30000,
+        "spend": 2000,
+        "period": "3 maanden"
+      },
+      "benefits": [
+        {
+          "title": "Spaar 1 Mile per 1 uitgegeven euro",
+          "description": "Verdien Flying Blue Miles bij al je uitgaven"
+        },
+        {
+          "title": "Ontvang elk jaar 30 Experience Points (XP)",
+          "description": "Bouw je Flying Blue status op"
+        },
+        {
+          "title": "Uitgebreide(reis)verzekeringen",
+          "description": "Reis onbezorgd met complete verzekeringen"
+        }
+      ],
+      "image": "/img/flying-blue-gold-card.avif"
+    },
+    "flying-blue-silver": {
+      "id": "flying-blue-silver",
+      "name": "Flying Blue - American Express Silver",
+      "type": "flyingBlue",
+      "color": "silver",
+      "annualFee": 95,
+      "welcomeBonus": {
+        "miles": 15000,
+        "spend": 1000,
+        "period": "3 maanden"
+      },
+      "benefits": [
+        {
+          "title": "Spaar 0,8 Miles per 1 uitgegeven euro",
+          "description": "Verdien Flying Blue Miles bij je uitgaven"
+        },
+        {
+          "title": "Ontvang elk jaar 15 Experience Points (XP)",
+          "description": "Begin met het opbouwen van je status"
+        },
+        {
+          "title": "Fly now Pay later",
+          "description": "Flexibele betalingsmogelijkheden voor je vluchten"
+        }
+      ],
+      "image": "/img/flying-blue-silver-card.avif"
+    },
+    "flying-blue-entry": {
+      "id": "flying-blue-entry",
+      "name": "Flying Blue - American Express Entry",
+      "type": "flyingBlue",
+      "color": "blue",
+      "annualFee": 0,
+      "welcomeBonus": {
+        "miles": 5000,
+        "spend": 500,
+        "period": "3 maanden"
+      },
+      "benefits": [
+        {
+          "title": "Spaar 1 Mile per 2 uitgegeven euro's",
+          "description": "Begin met het sparen van Flying Blue Miles"
+        },
+        {
+          "title": "Fly now Pay later",
+          "description": "Flexibele betalingsmogelijkheden"
+        },
+        {
+          "title": "2 extra kaarten voor familieleden of vrienden",
+          "description": "Deel de voordelen met je dierbaren"
+        }
+      ],
+      "image": "/img/flying-blue-entry-card.avif"
+    },
+    "blue": {
+      "id": "blue",
+      "name": "American Express Blue",
+      "type": "standard",
+      "color": "blue",
+      "annualFee": 0,
+      "welcomeBonus": {
+        "points": 5000,
+        "spend": 500,
+        "period": "3 maanden"
+      },
+      "benefits": [
+        {
+          "title": "Spaar 1 punt per 1 uitgegeven euro",
+          "description": "Verdien punten bij al je dagelijkse uitgaven"
+        },
+        {
+          "title": "Geen jaarlijkse kosten",
+          "description": "Begin zonder kosten met het sparen van punten"
+        },
+        {
+          "title": "2 extra kaarten voor familieleden of vrienden",
+          "description": "Deel de voordelen met je dierbaren"
+        }
+      ],
+      "image": "/img/blue-card.avif"
+    }
+  }
+} 

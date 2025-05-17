@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://amexpunten.nl/sitemap.xml
+
+# Allow all other routes
+Allow: /* 

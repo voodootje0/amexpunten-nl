@@ -1,0 +1,60 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Project Structure
+- Use Next.js 15 App Router structure
+- Follow atomic design principles for components
+- Implement proper file organization in src directory
+
+# Components
+- Keep components small and focused
+- Use TypeScript for proper prop typing
+- Follow KISS and DRY principles
+- Implement atomic design pattern
+
+# Styling
+- Use Tailwind utility classes
+- Follow mobile-first approach
+- Implement responsive design patterns
+- Use CSS modules for component-specific styles
+
+# SEO Requirements
+- Implement proper meta tags
+- Use semantic HTML
+- Optimize images with next/image
+- Implement structured data
+- Ensure proper heading hierarchy
+- Add sitemap.xml and robots.txt
+
+# Performance
+- Implement proper image optimization
+- Use proper caching strategies
+- Implement lazy loading where appropriate
+- Optimize bundle size
+- Use proper code splitting
+
+# Mobile Support
+- Implement responsive design
+- Test on multiple device sizes
+- Ensure touch-friendly interfaces
+- Optimize for mobile performance
+- Implement proper viewport meta tags
+
+# Accessibility
+- Follow WCAG 2.1 guidelines
+- Implement proper ARIA labels
+- Ensure keyboard navigation
+- Maintain proper color contrast
+- Add proper alt text for images
+
+# Testing
+- Write unit tests for components
+- Test responsive design
+- Test accessibility
+- Implement integration tests
+
+@src/app/layout.tsx
+@src/components/Button.tsx
+@src/styles/globals.css

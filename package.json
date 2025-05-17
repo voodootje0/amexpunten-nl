@@ -1,0 +1,40 @@
+{
+	"name": "amexpunten",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+		"preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview"
+	},
+	"dependencies": {
+		"@googlemaps/js-api-loader": "^1.16.8",
+		"@opennextjs/cloudflare": "^1.0.2",
+		"@tailwindcss/typography": "^0.5.10",
+		"@types/google.maps": "^3.58.1",
+		"framer-motion": "^12.12.1",
+		"gray-matter": "^4.0.3",
+		"lucide-react": "^0.510.0",
+		"next": "15.3.2",
+		"next-mdx-remote": "^5.0.0",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0",
+		"react-hot-toast": "^2.5.2",
+		"react-icons": "^5.5.0",
+		"react-markdown": "^10.1.0",
+		"remark-gfm": "^4.0.1"
+	},
+	"devDependencies": {
+		"@types/node": "22.15.18",
+		"@types/react": "19.1.4",
+		"autoprefixer": "^10.4.17",
+		"eslint": "9.26.0",
+		"eslint-config-next": "15.3.2",
+		"postcss": "^8.4.35",
+		"tailwindcss": "^3.4.1",
+		"typescript": "5.8.3"
+	}
+}

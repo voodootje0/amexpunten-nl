@@ -1,0 +1,103 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+{
+  "version": 1,
+  "rules": {
+    "project": {
+      "name": "next-dr-org-site",
+      "framework": "nextjs",
+      "version": "15.0.0"
+    },
+    "mdc": {
+      "enabled": true,
+      "file_patterns": {
+        "components": {
+          "pattern": "src/components/**/*.{tsx,jsx}",
+          "rules": [
+            "Use atomic design principles",
+            "Keep components small and focused",
+            "Implement proper prop typing with TypeScript",
+            "Follow KISS and DRY principles"
+          ]
+        },
+        "pages": {
+          "pattern": "src/app/**/*.{tsx,jsx}",
+          "rules": [
+            "Use App Router structure",
+            "Implement proper metadata for SEO",
+            "Follow Next.js 15 conventions"
+          ]
+        },
+        "styles": {
+          "pattern": "src/styles/**/*.{css,scss}",
+          "rules": [
+            "Use Tailwind utility classes",
+            "Follow mobile-first approach",
+            "Implement responsive design patterns"
+          ]
+        },
+        "tests": {
+          "pattern": "**/*.test.{ts,tsx}",
+          "rules": [
+            "Write unit tests for components",
+            "Test responsive design",
+            "Test accessibility"
+          ]
+        }
+      }
+    },
+    "seo": {
+      "requirements": [
+        "Implement proper meta tags",
+        "Use semantic HTML",
+        "Optimize images with next/image",
+        "Implement structured data",
+        "Ensure proper heading hierarchy",
+        "Add sitemap.xml",
+        "Add robots.txt"
+      ]
+    },
+    "performance": {
+      "requirements": [
+        "Implement proper image optimization",
+        "Use proper caching strategies",
+        "Implement lazy loading where appropriate",
+        "Optimize bundle size",
+        "Use proper code splitting"
+      ]
+    },
+    "mobile": {
+      "requirements": [
+        "Implement responsive design",
+        "Test on multiple device sizes",
+        "Ensure touch-friendly interfaces",
+        "Optimize for mobile performance",
+        "Implement proper viewport meta tags"
+      ]
+    },
+    "accessibility": {
+      "requirements": [
+        "Follow WCAG 2.1 guidelines",
+        "Implement proper ARIA labels",
+        "Ensure keyboard navigation",
+        "Maintain proper color contrast",
+        "Add proper alt text for images"
+      ]
+    },
+    "file_structure": {
+      "src": {
+        "app": "Next.js app router pages",
+        "components": "Reusable UI components",
+        "lib": "Utility functions and shared logic",
+        "styles": "Global styles and Tailwind config",
+        "types": "TypeScript type definitions",
+        "hooks": "Custom React hooks",
+        "context": "React context providers",
+        "services": "API and external service integrations"
+      }
+    }
+  }
+}
