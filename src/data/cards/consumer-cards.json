@@ -29,7 +29,7 @@
     },
     "gold": {
       "id": "gold",
-      "name": "The Gold Card",
+      "name": "American Express Gold",
       "type": "standard",
       "color": "gold",
       "annualFee": 195,
