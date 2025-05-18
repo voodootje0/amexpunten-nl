@@ -6,6 +6,7 @@ import Layout from '@/components/Layout';
 import Image from 'next/image';
 import { FaCheck, FaTimes, FaExchangeAlt, FaEuroSign, FaPlane, FaShieldAlt, FaChartLine } from 'react-icons/fa';
 import consumerCards from '@/data/cards/consumer-cards.json';
+import Link from 'next/link';
 
 type Card = {
   id: string;
@@ -124,18 +125,30 @@ export default function CompareCreditCardsPage() {
       title="Vergelijk Creditcards | Amex Punten"
       description="Vergelijk alle American Express creditcards en vind de beste kaart voor jou."
     >
-      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 py-8">
-        {/* Header Section */}
-        <div className="text-center mb-6">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Vergelijk Creditcards
-          </h1>
-          <p className="text-base text-gray-600">
-            Selecteer maximaal 3 kaarten om te vergelijken
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-r from-blue-900 to-blue-700 text-white py-16 mb-8 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/img/creditcard-bg.svg')] bg-cover bg-center opacity-10 pointer-events-none" />
+        <div className="relative max-w-3xl mx-auto px-4 text-center z-10">
+          <div className="flex justify-center mb-4">
+            <FaChartLine className="w-12 h-12 text-yellow-400 drop-shadow-lg" />
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 drop-shadow">Vergelijk alle Amex Creditcards</h1>
+          <p className="text-lg md:text-xl text-blue-100 mb-6">
+            Vind de kaart die het beste bij jou past. Vergelijk voordelen, kosten en meer – snel en overzichtelijk.
           </p>
+          <div className="flex flex-wrap justify-center gap-4 mt-4">
+            <a href="#vergelijking" className="bg-yellow-400/90 text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition-colors shadow">
+              Start met vergelijken
+            </a>
+            <a href="/creditcards" className="bg-white/10 border border-white/20 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/20 transition-colors shadow">
+              Bekijk alle kaarten
+            </a>
+          </div>
         </div>
+      </section>
 
-        {/* Compact Grid Table with Card Selection in Header */}
+      {/* Comparison Table */}
+      <div id="vergelijking" className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
         <div className="overflow-x-auto">
           <table className="min-w-full border-separate border-spacing-0 text-xs">
             <thead>
@@ -170,6 +183,12 @@ export default function CompareCreditCardsPage() {
                           <div className="text-xs font-semibold text-center text-gray-800 leading-tight mt-1">
                             {cardsData.cards[selectedCards[columnIndex]].name}
                           </div>
+                          <Link
+                            href={`/creditcards/${cardsData.cards[selectedCards[columnIndex]].id}`}
+                            className="mt-2 inline-block bg-blue-600 text-white px-3 py-1.5 rounded text-xs font-medium hover:bg-blue-700 transition-colors shadow"
+                          >
+                            Meer info
+                          </Link>
                         </>
                       ) : (
                         <div className="flex flex-col items-center justify-center w-full h-14 border border-dashed border-gray-300 rounded bg-gray-50">
@@ -221,23 +240,61 @@ export default function CompareCreditCardsPage() {
             </tbody>
           </table>
         </div>
-
-        {/* Share Section */}
-        {selectedCards.some(Boolean) && (
-          <div className="mt-6 text-center">
-            <button
-              onClick={() => {
-                navigator.clipboard.writeText(window.location.href);
-                alert('Link gekopieerd naar klembord!');
-              }}
-              className="inline-flex items-center px-3 py-1.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-xs"
-            >
-              <FaExchangeAlt className="w-4 h-4 mr-2" />
-              Deel Vergelijking
-            </button>
-          </div>
-        )}
       </div>
+
+      {/* FAQ Section */}
+      <section className="max-w-3xl mx-auto mt-16 mb-10 px-4">
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">Veelgestelde vragen</h2>
+        <div className="space-y-4">
+          <details className="bg-gray-50 rounded p-4">
+            <summary className="font-semibold cursor-pointer">Hoe kies ik de beste creditcard voor mij?</summary>
+            <p className="mt-2 text-gray-700">Let op je uitgavenpatroon, gewenste voordelen (zoals reizen of sparen), en de jaarlijkse kosten. Vergelijk altijd meerdere kaarten.</p>
+          </details>
+          <details className="bg-gray-50 rounded p-4">
+            <summary className="font-semibold cursor-pointer">Wordt mijn aanvraag altijd goedgekeurd?</summary>
+            <p className="mt-2 text-gray-700">Nee, de verstrekker beoordeelt je aanvraag op basis van je financiële situatie en kredietwaardigheid.</p>
+          </details>
+          <details className="bg-gray-50 rounded p-4">
+            <summary className="font-semibold cursor-pointer">Kan ik punten of miles sparen met elke kaart?</summary>
+            <p className="mt-2 text-gray-700">Niet elke kaart spaart punten of miles. Bekijk de details per kaart in de vergelijkingstabel.</p>
+          </details>
+        </div>
+      </section>
+
+      {/* Tips Section */}
+      <section className="max-w-3xl mx-auto mb-10 px-4">
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">Tips voor het kiezen van een creditcard</h2>
+        <ul className="list-disc pl-6 space-y-2 text-gray-700">
+          <li>Bepaal waarvoor je de kaart vooral wilt gebruiken (reizen, sparen, aankopen).</li>
+          <li>Let op de jaarlijkse kosten en eventuele extra voordelen.</li>
+          <li>Controleer of je in aanmerking komt voor de welkomstbonus.</li>
+          <li>Vergelijk verzekeringen en extra services per kaart.</li>
+        </ul>
+      </section>
+
+      {/* Populaire Kaarten Section */}
+      <section className="max-w-7xl mx-auto mb-10 px-4">
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">Populaire kaarten</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+          {allCards.slice(0, 4).map((card) => (
+            <div key={card.id} className="bg-white rounded-xl shadow p-4 flex flex-col items-center">
+              <Image src={card.image} alt={card.name} width={180} height={110} className="mb-3 rounded" />
+              <h3 className="font-semibold text-gray-900 mb-2 text-center">{card.name}</h3>
+              <Link href={`/creditcards/${card.id}`} className="bg-blue-600 text-white px-4 py-2 rounded text-xs font-medium hover:bg-blue-700 transition-colors mt-auto">
+                Bekijk kaart
+              </Link>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Disclaimer Section */}
+      <section className="max-w-3xl mx-auto mb-10 px-4">
+        <div className="bg-yellow-100 border-l-4 border-yellow-400 p-4 rounded">
+          <h2 className="font-bold text-yellow-800 mb-1">Let op!</h2>
+          <p className="text-yellow-900 text-sm">Gebruik creditcards verantwoord. Betaal op tijd om extra kosten en rente te voorkomen. Lees altijd de voorwaarden van de kaart die je kiest.</p>
+        </div>
+      </section>
     </Layout>
   );
 } 
