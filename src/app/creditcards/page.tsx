@@ -5,7 +5,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { 
   FaPlane, 
-  FaGift, 
   FaShieldAlt, 
   FaCreditCard, 
   FaBuilding,
@@ -42,7 +41,7 @@ const benefitIcons: Record<string, IconType> = {
   'Spaar 1,5 Miles per 1 uitgegeven euro': FaCoins,
   'Spaar 1 Mile per 1 uitgegeven euro': FaCoins,
   'Spaar 0,8 Miles per 1 uitgegeven euro': FaCoins,
-  'Spaar 1 Mile per 2 uitgegeven euro\'s': FaCoins,
+  'Spaar 1 Mile per 2 uitgegeven euro&apos;s': FaCoins,
 };
 
 type Card = {
