@@ -5,14 +5,18 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
+type CategoryParams = Promise<{ slug: string }>;
+type SearchParamsType = Promise<{ [key: string]: string | string[] | undefined }>;
+
 interface CategoryPageProps {
-  params: {
-    slug: string;
-  };
+  params: CategoryParams;
+  searchParams: SearchParamsType;
 }
 
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
-  const category = await getCategory(params.slug);
+  const { slug } = await params;
+
+  const category = await getCategory(slug);
   
   if (!category) {
     return {
@@ -35,13 +39,14 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
 }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
-  const category = await getCategory(params.slug);
+  const { slug } = await params;
+  const category = await getCategory(slug);
   
   if (!category) {
     notFound();
   }
 
-  const posts = await getBlogPostsByCategory(params.slug);
+  const posts = await getBlogPostsByCategory(slug);
 
   return (
     <Layout

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Layout from '@/components/Layout';
 import Image from 'next/image';
@@ -60,7 +60,7 @@ const filterPriceKeys = (keys: string[]) =>
       !k.toLowerCase().includes('welkomstbonus')
   );
 
-export default function CompareCreditCardsPage() {
+function ComparisonTable() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const cardsData = consumerCards as CardsData;
@@ -121,6 +121,104 @@ export default function CompareCreditCardsPage() {
   };
 
   return (
+    <div id="vergelijking" className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+      <div className="overflow-x-auto">
+        <table className="min-w-full border-separate border-spacing-0 text-xs">
+          <thead>
+            <tr>
+              <th className="w-64 bg-gray-50 sticky left-0 z-10 text-base text-gray-900 font-bold text-left align-bottom">&nbsp;</th>
+              {[0, 1, 2].map((columnIndex) => (
+                <th key={columnIndex} className="bg-gray-50 font-semibold text-gray-900 text-center px-2 py-2 min-w-[160px] align-bottom">
+                  <div className="flex flex-col items-center w-full">
+                    <select
+                      value={selectedCards[columnIndex] || ''}
+                      onChange={(e) => handleCardSelection(e.target.value, columnIndex)}
+                      className="w-full p-1 mb-1 border rounded bg-gray-50 text-xs"
+                      style={{ minWidth: 0 }}
+                    >
+                      <option value="">Selecteer een kaart</option>
+                      {allCards.map((card) => (
+                        <option key={card.id + '-' + columnIndex} value={card.id}>
+                          {card.name}
+                        </option>
+                      ))}
+                    </select>
+                    {selectedCards[columnIndex] ? (
+                      <>
+                        <div className="relative w-24 h-14 mb-1 flex-shrink-0 flex-grow-0 mx-auto">
+                          <Image
+                            src={cardsData.cards[selectedCards[columnIndex]].image}
+                            alt={cardsData.cards[selectedCards[columnIndex]].name}
+                            fill
+                            className="object-contain rounded"
+                          />
+                        </div>
+                        <div className="text-xs font-semibold text-center text-gray-800 leading-tight mt-1">
+                          {cardsData.cards[selectedCards[columnIndex]].name}
+                        </div>
+                        <Link
+                          href={`/creditcards/${cardsData.cards[selectedCards[columnIndex]].id}`}
+                          className="mt-2 inline-block bg-blue-600 text-white px-3 py-1.5 rounded text-xs font-medium hover:bg-blue-700 transition-colors shadow"
+                        >
+                          Meer info
+                        </Link>
+                      </>
+                    ) : (
+                      <div className="flex flex-col items-center justify-center w-full h-14 border border-dashed border-gray-300 rounded bg-gray-50">
+                        <span className="text-gray-400 text-xs">Selecteer een kaart</span>
+                      </div>
+                    )}
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {Object.entries(sectionTitles).map(([section, title]) => {
+              const Icon = sectionIcons[section as keyof typeof sectionIcons];
+              let keys = Object.keys(cardsData.cards[selectedCards.find(Boolean)!]?.allBenefits[section as keyof typeof sectionTitles] || {});
+              if (section === 'price') keys = filterPriceKeys(keys);
+              return (
+                <>
+                  {/* Section header row */}
+                  <tr key={section + '-header'} className="bg-white">
+                    <td colSpan={4} className="py-2 px-2 bg-gray-100 font-bold text-blue-700 text-left border-t border-b border-gray-200 text-sm">
+                      <span className="inline-flex items-center gap-2">
+                        <Icon className="w-4 h-4 text-blue-600" /> {title}
+                      </span>
+                    </td>
+                  </tr>
+                  {/* Section benefit rows */}
+                  {keys.map((key, rowIdx) => (
+                    <tr key={section + '-' + key + '-' + rowIdx} className="border-b border-gray-100">
+                      <td className="py-2 px-3 bg-gray-50 text-gray-900 font-semibold sticky left-0 z-10 min-w-[220px] max-w-[320px] text-sm whitespace-pre-line">
+                        {key}
+                      </td>
+                      {[0, 1, 2].map((colIdx) => (
+                        <td key={colIdx + '-' + key + '-' + rowIdx} className="py-2 px-2 text-center align-middle">
+                          {selectedCards[colIdx]
+                            ? renderValue(
+                                section,
+                                key,
+                                cardsData.cards[selectedCards[colIdx]].allBenefits[section as keyof typeof sectionTitles][key]
+                              )
+                            : ''}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+export default function CompareCreditCardsPage() {
+  return (
     <Layout
       title="Vergelijk Creditcards | Amex Punten"
       description="Vergelijk alle American Express creditcards en vind de beste kaart voor jou."
@@ -148,99 +246,9 @@ export default function CompareCreditCardsPage() {
       </section>
 
       {/* Comparison Table */}
-      <div id="vergelijking" className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
-        <div className="overflow-x-auto">
-          <table className="min-w-full border-separate border-spacing-0 text-xs">
-            <thead>
-              <tr>
-                <th className="w-64 bg-gray-50 sticky left-0 z-10 text-base text-gray-900 font-bold text-left align-bottom">&nbsp;</th>
-                {[0, 1, 2].map((columnIndex) => (
-                  <th key={columnIndex} className="bg-gray-50 font-semibold text-gray-900 text-center px-2 py-2 min-w-[160px] align-bottom">
-                    <div className="flex flex-col items-center w-full">
-                      <select
-                        value={selectedCards[columnIndex] || ''}
-                        onChange={(e) => handleCardSelection(e.target.value, columnIndex)}
-                        className="w-full p-1 mb-1 border rounded bg-gray-50 text-xs"
-                        style={{ minWidth: 0 }}
-                      >
-                        <option value="">Selecteer een kaart</option>
-                        {allCards.map((card) => (
-                          <option key={card.id + '-' + columnIndex} value={card.id}>
-                            {card.name}
-                          </option>
-                        ))}
-                      </select>
-                      {selectedCards[columnIndex] ? (
-                        <>
-                          <div className="relative w-24 h-14 mb-1 flex-shrink-0 flex-grow-0 mx-auto">
-                            <Image
-                              src={cardsData.cards[selectedCards[columnIndex]].image}
-                              alt={cardsData.cards[selectedCards[columnIndex]].name}
-                              fill
-                              className="object-contain rounded"
-                            />
-                          </div>
-                          <div className="text-xs font-semibold text-center text-gray-800 leading-tight mt-1">
-                            {cardsData.cards[selectedCards[columnIndex]].name}
-                          </div>
-                          <Link
-                            href={`/creditcards/${cardsData.cards[selectedCards[columnIndex]].id}`}
-                            className="mt-2 inline-block bg-blue-600 text-white px-3 py-1.5 rounded text-xs font-medium hover:bg-blue-700 transition-colors shadow"
-                          >
-                            Meer info
-                          </Link>
-                        </>
-                      ) : (
-                        <div className="flex flex-col items-center justify-center w-full h-14 border border-dashed border-gray-300 rounded bg-gray-50">
-                          <span className="text-gray-400 text-xs">Selecteer een kaart</span>
-                        </div>
-                      )}
-                    </div>
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {Object.entries(sectionTitles).map(([section, title]) => {
-                const Icon = sectionIcons[section as keyof typeof sectionIcons];
-                let keys = Object.keys(cardsData.cards[selectedCards.find(Boolean)!]?.allBenefits[section as keyof typeof sectionTitles] || {});
-                if (section === 'price') keys = filterPriceKeys(keys);
-                return (
-                  <>
-                    {/* Section header row */}
-                    <tr key={section + '-header'} className="bg-white">
-                      <td colSpan={4} className="py-2 px-2 bg-gray-100 font-bold text-blue-700 text-left border-t border-b border-gray-200 text-sm">
-                        <span className="inline-flex items-center gap-2">
-                          <Icon className="w-4 h-4 text-blue-600" /> {title}
-                        </span>
-                      </td>
-                    </tr>
-                    {/* Section benefit rows */}
-                    {keys.map((key, rowIdx) => (
-                      <tr key={section + '-' + key + '-' + rowIdx} className="border-b border-gray-100">
-                        <td className="py-2 px-3 bg-gray-50 text-gray-900 font-semibold sticky left-0 z-10 min-w-[220px] max-w-[320px] text-sm whitespace-pre-line">
-                          {key}
-                        </td>
-                        {[0, 1, 2].map((colIdx) => (
-                          <td key={colIdx + '-' + key + '-' + rowIdx} className="py-2 px-2 text-center align-middle">
-                            {selectedCards[colIdx]
-                              ? renderValue(
-                                  section,
-                                  key,
-                                  cardsData.cards[selectedCards[colIdx]].allBenefits[section as keyof typeof sectionTitles][key]
-                                )
-                              : ''}
-                          </td>
-                        ))}
-                      </tr>
-                    ))}
-                  </>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <Suspense fallback={<div className="max-w-7xl mx-auto px-4 py-8">Loading...</div>}>
+        <ComparisonTable />
+      </Suspense>
 
       {/* FAQ Section */}
       <section className="max-w-3xl mx-auto mt-16 mb-10 px-4">
@@ -276,7 +284,7 @@ export default function CompareCreditCardsPage() {
       <section className="max-w-7xl mx-auto mb-10 px-4">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Populaire kaarten</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {allCards.slice(0, 4).map((card) => (
+          {Object.values(consumerCards.cards).slice(0, 4).map((card) => (
             <div key={card.id} className="bg-white rounded-xl shadow p-4 flex flex-col items-center">
               <Image src={card.image} alt={card.name} width={180} height={110} className="mb-3 rounded" />
               <h3 className="font-semibold text-gray-900 mb-2 text-center">{card.name}</h3>
