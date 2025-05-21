@@ -2,22 +2,21 @@
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import { Star, Shield, Gift, Award, Check, ArrowRight } from 'lucide-react';
 import consumerCards from '@/data/cards/consumer-cards.json';
-import businessCards from '@/data/cards/business-cards.json';
 import { Card } from '@/types/cards';
 import Layout from '@/components/Layout';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Gift, Award, ArrowRight } from 'lucide-react';
 
 export default function CreditCardPage() {
   const params = useParams();
   const [card, setCard] = useState<Card | null>(null);
 
   useEffect(() => {
-    // Zoek de kaart in zowel consumer als business cards
+    // Only use consumer cards
     const allCards: Record<string, Card> = {
       ...consumerCards.cards,
-      ...businessCards.business,
-      ...businessCards.corporate,
     };
     setCard(allCards[params.id as string] || null);
   }, [params.id]);
@@ -35,25 +34,17 @@ export default function CreditCardPage() {
     );
   }
 
-  const getCardColor = (color: Card['color']) => {
-    switch (color) {
-      case 'platinum':
-        return 'from-slate-400 to-slate-600';
-      case 'gold':
-        return 'from-amber-400 to-yellow-600';
-      case 'green':
-        return 'from-emerald-400 to-green-600';
-      case 'silver':
-        return 'from-slate-300 to-slate-500';
-      case 'blue':
-        return 'from-blue-400 to-blue-600';
-      default:
-        return 'from-slate-400 to-slate-600';
-    }
-  };
+  // Get 3 main voordelen, rest as 'other'
+  const mainBenefits = card.benefits.slice(0, 3);
+  const otherBenefits = card.benefits.slice(3);
 
-  const isFlyingBlue = card.type === 'flyingBlue';
-  const pointsLabel = isFlyingBlue ? 'miles' : 'punten';
+  // Find upgrade cards (higher annual fee, not self)
+  const upgradeCards = Object.values(consumerCards.cards)
+    .filter(c => c.annualFee > card.annualFee && c.id !== card.id)
+    .sort((a, b) => a.annualFee - b.annualFee)
+    .slice(0, 3);
+
+  const pointsLabel = card.type === 'flyingBlue' ? 'miles' : 'punten';
 
   return (
     <Layout
@@ -61,168 +52,106 @@ export default function CreditCardPage() {
       description={`Ontdek de voordelen van de ${card.name} credit card.`}
     >
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-slate-800 to-slate-900 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-transparent"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-white sm:text-5xl md:text-6xl">
-              <span className="block">{card.name}</span>
-              <span className="block bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-                {card.annualFee === 0 ? 'Geen jaarlijkse kosten' : `€${card.annualFee} per jaar`}
-              </span>
-            </h1>
-            <p className="mt-3 max-w-md mx-auto text-base text-gray-300 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-              Ontdek de exclusieve voordelen en privileges van de {card.name} credit card.
-            </p>
+      <section className="relative bg-gradient-to-r from-blue-900 to-blue-700 text-white py-16 mb-8 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/img/creditcard-bg.svg')] bg-cover bg-center opacity-10 pointer-events-none" />
+        <div className="relative max-w-3xl mx-auto px-4 text-center z-10">
+          <div className="flex justify-center mb-6">
+            <Image src={card.image} alt={card.name} width={260} height={160} className="rounded-xl shadow-lg bg-white" />
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-2 drop-shadow">{card.name}</h1>
+          <p className="text-lg md:text-xl text-blue-100 mb-2">
+            {card.annualFee === 0 ? 'Geen jaarlijkse kosten' : `€${card.annualFee} per jaar`}
+          </p>
+        </div>
+      </section>
+
+      {/* Welkomstbonus (smaller) */}
+      <section className="max-w-2xl mx-auto mb-8 px-4">
+        <div className="flex items-center gap-3 bg-blue-50 rounded-xl p-4 shadow-sm">
+          <Gift className="w-7 h-7 text-blue-500" />
+          <div>
+            <span className="font-semibold text-blue-900">
+              {card.welcomeBonus.points?.toLocaleString() || card.welcomeBonus.miles?.toLocaleString()} {pointsLabel}
+            </span>
+            <span className="text-gray-700 ml-2 text-sm">
+              bij {card.welcomeBonus.spend.toLocaleString()} euro uitgeven in {card.welcomeBonus.period}
+            </span>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Welcome Bonus Section */}
-      <div className="bg-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Welkomstbonus</h2>
-              <div className="bg-gray-50 rounded-2xl p-8">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                    <Gift className="w-6 h-6 text-blue-500" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900">
-                      {card.welcomeBonus.points?.toLocaleString() || card.welcomeBonus.miles?.toLocaleString()}{' '}
-                      {pointsLabel}
-                    </h3>
-                    <p className="text-gray-600">
-                      bij {card.welcomeBonus.spend.toLocaleString()} euro uitgeven in {card.welcomeBonus.period}
-                    </p>
-                  </div>
-                </div>
-                <p className="text-gray-600">
-                  Start direct met het verzamelen van {pointsLabel} en geniet van de voordelen.
-                </p>
-              </div>
+      {/* Main Benefits */}
+      <section className="max-w-5xl mx-auto mb-8 px-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {mainBenefits.map((benefit, idx) => (
+            <div key={idx} className="bg-white rounded-xl shadow p-6 flex flex-col items-center text-center border border-gray-100">
+              <Award className="w-8 h-8 text-blue-500 mb-2" />
+              <h3 className="font-semibold text-lg text-gray-900 mb-1">{benefit.title}</h3>
+              <p className="text-gray-600 text-sm">{benefit.description}</p>
             </div>
-            <div className="relative">
-              <div className="aspect-w-16 aspect-h-9 rounded-2xl overflow-hidden">
-                <img
-                  src="/images/welcome-bonus.jpg"
-                  alt="Welkomstbonus"
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
-      </div>
+      </section>
 
-      {/* Benefits Section */}
-      <div className="bg-gray-50 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">Belangrijkste voordelen</h2>
-            <p className="mt-4 text-lg text-gray-600">
-              Ontdek de exclusieve voordelen van de {card.name}
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {card.benefits.map((benefit, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100"
-              >
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                    <Award className="w-6 h-6 text-blue-500" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900">{benefit.title}</h3>
-                </div>
-                <p className="text-gray-600">{benefit.description}</p>
+      {/* Other Benefits Table */}
+      {otherBenefits.length > 0 && (
+        <section className="max-w-3xl mx-auto mb-12 px-4">
+          <h2 className="text-xl font-bold text-gray-900 mb-3">Alle voordelen</h2>
+          <table className="w-full bg-white rounded-xl shadow border border-gray-100 text-sm">
+            <tbody>
+              {otherBenefits.map((benefit, idx) => (
+                <tr key={idx} className="border-b last:border-b-0">
+                  <td className="py-3 px-4 font-medium text-gray-900 w-1/3">{benefit.title}</td>
+                  <td className="py-3 px-4 text-gray-700">{benefit.description}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+      )}
+
+      {/* Upgrade Cards Section */}
+      {upgradeCards.length > 0 && (
+        <section className="max-w-5xl mx-auto mb-12 px-4">
+          <h2 className="text-xl font-bold text-gray-900 mb-6">Upgrade mogelijkheden</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {upgradeCards.map((upgrade) => (
+              <div key={upgrade.id} className="bg-white rounded-xl shadow p-4 flex flex-col items-center border border-gray-100">
+                <Image src={upgrade.image} alt={upgrade.name} width={180} height={110} className="mb-3 rounded" />
+                <h3 className="font-semibold text-gray-900 mb-2 text-center">{upgrade.name}</h3>
+                <p className="text-gray-700 mb-2 text-sm">€{upgrade.annualFee} per jaar</p>
+                <Link href={`/creditcards/${upgrade.id}`} className="bg-blue-600 text-white px-4 py-2 rounded text-xs font-medium hover:bg-blue-700 transition-colors mb-2">
+                  Bekijk kaart
+                </Link>
+                <a href={upgrade.referralUrl} target="_blank" rel="noopener noreferrer" className="inline-block bg-yellow-400/90 text-gray-900 px-4 py-2 rounded text-xs font-semibold hover:bg-yellow-400 transition-colors">
+                  Direct aanvragen
+                </a>
               </div>
             ))}
           </div>
-        </div>
-      </div>
-
-      {/* Insurance Section */}
-      {card.insurance && card.insurance.length > 0 && (
-        <div className="bg-white py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900">Verzekeringen</h2>
-              <p className="mt-4 text-lg text-gray-600">
-                Reis en koop met een gerust hart
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {card.insurance.map((item, index) => (
-                <div
-                  key={index}
-                  className="bg-gray-50 rounded-2xl p-6"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                      <Shield className="w-5 h-5 text-blue-500" />
-                    </div>
-                    <h3 className="text-lg font-semibold text-gray-900">{item}</h3>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        </section>
       )}
 
-      {/* Earning Rates Section */}
-      {card.earningRates && card.earningRates.length > 0 && (
-        <div className="bg-gray-50 py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900">Verdienratio's</h2>
-              <p className="mt-4 text-lg text-gray-600">
-                Verdien {pointsLabel} bij al je uitgaven
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {card.earningRates.map((rate, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100"
-                >
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                      <Star className="w-6 h-6 text-blue-500" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-900">{rate.category}</h3>
-                      <p className="text-2xl font-bold text-blue-500">{rate.multiplier}x</p>
-                    </div>
-                  </div>
-                  <p className="text-gray-600">{rate.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* CTA Section */}
-      <div className="bg-gradient-to-r from-blue-500 to-cyan-400 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-6">
+      {/* Aanvraag CTA */}
+      <section className="max-w-2xl mx-auto mb-16 px-4">
+        <div className="bg-gradient-to-r from-blue-500 to-cyan-400 py-10 px-6 rounded-2xl text-center shadow-lg">
+          <h2 className="text-2xl font-bold text-white mb-4">
             Klaar om te beginnen?
           </h2>
-          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-white/90 mb-6">
             Ontdek alle voordelen van de {card.name} en begin direct met het verzamelen van {pointsLabel}.
           </p>
-          <button className="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-medium rounded-full hover:bg-gray-100 transition-colors shadow-lg">
+          <a
+            href={card.referralUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-medium rounded-full hover:bg-gray-100 transition-colors shadow-lg"
+          >
             Direct aanvragen
             <ArrowRight className="w-5 h-5 ml-2" />
-          </button>
+          </a>
         </div>
-      </div>
+      </section>
     </Layout>
   );
 } 

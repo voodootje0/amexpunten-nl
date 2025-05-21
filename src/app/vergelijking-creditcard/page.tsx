@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Layout from '@/components/Layout';
 import Image from 'next/image';
-import { FaCheck, FaTimes, FaExchangeAlt, FaEuroSign, FaPlane, FaShieldAlt, FaChartLine } from 'react-icons/fa';
+import { FaCheck, FaTimes, FaEuroSign, FaPlane, FaShieldAlt, FaChartLine } from 'react-icons/fa';
 import consumerCards from '@/data/cards/consumer-cards.json';
 import Link from 'next/link';
 
@@ -137,12 +137,12 @@ export default function CompareCreditCardsPage() {
             Vind de kaart die het beste bij jou past. Vergelijk voordelen, kosten en meer – snel en overzichtelijk.
           </p>
           <div className="flex flex-wrap justify-center gap-4 mt-4">
-            <a href="#vergelijking" className="bg-yellow-400/90 text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition-colors shadow">
+            <Link href="#vergelijking" className="bg-yellow-400/90 text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition-colors shadow">
               Start met vergelijken
-            </a>
-            <a href="/creditcards" className="bg-white/10 border border-white/20 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/20 transition-colors shadow">
+            </Link>
+            <Link href="/creditcards" className="bg-white/10 border border-white/20 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/20 transition-colors shadow">
               Bekijk alle kaarten
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -201,7 +201,7 @@ export default function CompareCreditCardsPage() {
               </tr>
             </thead>
             <tbody>
-              {Object.entries(sectionTitles).map(([section, title], sectionIdx) => {
+              {Object.entries(sectionTitles).map(([section, title]) => {
                 const Icon = sectionIcons[section as keyof typeof sectionIcons];
                 let keys = Object.keys(cardsData.cards[selectedCards.find(Boolean)!]?.allBenefits[section as keyof typeof sectionTitles] || {});
                 if (section === 'price') keys = filterPriceKeys(keys);

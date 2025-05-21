@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { getBlogPost, getBlogPosts } from '@/lib/blog';
 import Layout from '../../../components/Layout';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 interface BlogPostPageProps {
@@ -66,11 +67,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <article className="bg-white rounded-xl shadow-lg overflow-hidden">
           {post.featuredImage && (
-            <div className="aspect-w-16 aspect-h-9">
-              <img
+            <div className="aspect-w-16 aspect-h-9 relative">
+              <Image
                 src={post.featuredImage}
                 alt={post.title}
-                className="object-cover w-full h-96"
+                fill
+                className="object-cover"
               />
             </div>
           )}

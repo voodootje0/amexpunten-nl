@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { getBlogPostsByCategory, getCategory } from '@/lib/blog';
 import Layout from '../../../../components/Layout';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 interface CategoryPageProps {
@@ -58,11 +59,12 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
             >
               {post.featuredImage && (
-                <div className="aspect-w-16 aspect-h-9">
-                  <img
+                <div className="aspect-w-16 aspect-h-9 relative">
+                  <Image
                     src={post.featuredImage}
                     alt={post.title}
-                    className="object-cover w-full h-48"
+                    fill
+                    className="object-cover"
                   />
                 </div>
               )}

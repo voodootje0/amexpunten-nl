@@ -54,7 +54,8 @@
           "Experience Points per jaar": 0
         }
       },
-      "image": "/img/platinum-card.avif"
+      "image": "/img/platinum-card.avif",
+      "referralUrl": "https://affiliate.example.com/platinum"
     },
     "gold": {
       "id": "gold",
@@ -110,7 +111,8 @@
           "Experience Points per jaar": 0
         }
       },
-      "image": "/img/gold-card.avif"
+      "image": "/img/gold-card.avif",
+      "referralUrl": "https://affiliate.example.com/gold"
     },
     "green": {
       "id": "green",
@@ -166,7 +168,8 @@
           "Experience Points per jaar": 0
         }
       },
-      "image": "/img/green-card.avif"
+      "image": "/img/green-card.avif",
+      "referralUrl": "https://affiliate.example.com/green"
     },
     "flying-blue-platinum": {
       "id": "flying-blue-platinum",
@@ -222,7 +225,8 @@
           "Experience Points per jaar": 60
         }
       },
-      "image": "/img/flying-blue-platinum-card.avif"
+      "image": "/img/flying-blue-platinum-card.avif",
+      "referralUrl": "https://affiliate.example.com/flying-blue-platinum"
     },
     "flying-blue-gold": {
       "id": "flying-blue-gold",
@@ -278,7 +282,8 @@
           "Experience Points per jaar": 30
         }
       },
-      "image": "/img/flying-blue-gold-card.avif"
+      "image": "/img/flying-blue-gold-card.avif",
+      "referralUrl": "https://affiliate.example.com/flying-blue-gold"
     },
     "flying-blue-silver": {
       "id": "flying-blue-silver",
@@ -334,7 +339,8 @@
           "Experience Points per jaar": 15
         }
       },
-      "image": "/img/flying-blue-silver-card.avif"
+      "image": "/img/flying-blue-silver-card.avif",
+      "referralUrl": "https://affiliate.example.com/flying-blue-silver"
     },
     "flying-blue-entry": {
       "id": "flying-blue-entry",
@@ -390,7 +396,8 @@
           "Experience Points per jaar": 0
         }
       },
-      "image": "/img/flying-blue-entry-card.avif"
+      "image": "/img/flying-blue-entry-card.avif",
+      "referralUrl": "https://affiliate.example.com/flying-blue-entry"
     },
     "blue": {
       "id": "blue",
@@ -446,7 +453,8 @@
           "Experience Points per jaar": 0
         }
       },
-      "image": "/img/blue-card.avif"
+      "image": "/img/blue-card.avif",
+      "referralUrl": "https://affiliate.example.com/blue"
     }
   }
 } 

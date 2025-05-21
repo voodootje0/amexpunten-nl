@@ -36,6 +36,7 @@ export type Card = {
   insurance?: string[];
   image: string;
   color: string;
+  referralUrl?: string;
 };
 
 export type ConsumerCards = {

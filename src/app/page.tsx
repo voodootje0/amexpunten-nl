@@ -1,5 +1,5 @@
 import Layout from '../components/Layout';
-import { CreditCard, Calculator, Gift, TrendingUp, Shield, Clock, Plane, ShoppingBag, Star, ArrowRight } from 'lucide-react';
+import { Gift, TrendingUp, Shield, Star, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import consumerCards from '@/data/cards/consumer-cards.json';
